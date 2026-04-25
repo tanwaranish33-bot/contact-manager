@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+  base.html — Master layout template
+  All pages extend this file using Jinja2 template inheritance.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Contacts{% endblock %} · ContactHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ url_for('index') }}" class="brand">
+        <span class="brand-icon">◈</span>
+        Contact<span class="brand-accent">Hub</span>
+      </a>
+      <nav class="site-nav">
+        <a href="{{ url_for('index') }}"       class="nav-link">All Contacts</a>
+        <a href="{{ url_for('add_contact') }}" class="nav-link nav-cta">+ Add Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Page Content ===== -->
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>ContactHub · Built with Flask &amp; Jinja2 · Experiment 6</p>
+  </footer>
+
+</body>
+</html>
